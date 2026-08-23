@@ -2,3 +2,18 @@ trigger: none
 
 pool: powermanage-pool
 
+stages:
+- stage: Build
+  displayName: Build & Code Quality
+  jobs:
+  - job: BuildPythonApp
+    displayName:  Build Python Application
+    steps:  
+    
+    - task: PowerShell@2
+      displayName: Check Python Version & Install Lint Tool
+      inputs:
+        targetType: 'inline'
+        script: |
+          python --version
+          pip install ruff
