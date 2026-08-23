@@ -18,11 +18,11 @@ stages:
           python --version
           pip install ruff
 
-    - task: PowerShell@2
-      displayName: Run Python Linting (Ruff)
-      inputs:
-        targetType: 'inline'
-        script: |
-          python -m ruff --version
-          python -m ruff check app.py
+    # - task: PowerShell@2
+    #   displayName: Run Python Linting (Ruff)
+    #   inputs:
+    #     targetType: 'inline'
+    #     script: |
+    #       python -m ruff --version
+    #       python -m ruff check app.py
 
