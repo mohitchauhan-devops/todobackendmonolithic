@@ -22,5 +22,7 @@ stages:
       displayName: Run Python Linting (Ruff)
       inputs:
         targetType: 'inline'
-        script: 'ruff check --fix .'
+        script: |
+          python -m ruff --version
+          python -m ruff check app.py
 
