@@ -17,3 +17,10 @@ stages:
         script: |
           python --version
           pip install ruff
+
+    - task: PowerShell@2
+      displayName: Run Python Linting (Ruff)
+      inputs:
+        targetType: 'inline'
+        script: 'ruff check --fix .'
+
