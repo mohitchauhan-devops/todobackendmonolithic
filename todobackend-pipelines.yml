@@ -32,3 +32,18 @@ stages:
         targetPath: '$(System.DefaultWorkingDirectory)/app.py'
         artifact: 'todoapi_artifact'
         publishLocation: 'pipeline'
+
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        buildType: 'current'
+        artifactName: 'todoapi_artifact'
+        targetPath: '$(Pipeline.Workspace)/todoapi_artifact'
+
+
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Pipeline.Workspace)/todoapi_artifact'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/artifact.zip'
+        replaceExistingArchive: true
